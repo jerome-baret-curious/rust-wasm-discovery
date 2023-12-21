@@ -1,0 +1,8 @@
+.controls-container {
+    display: flex;
+    gap: 0.5rem;
+}
+
+#qrversion {
+    width: 3em;
+}

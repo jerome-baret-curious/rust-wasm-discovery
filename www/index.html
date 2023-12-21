@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>QR Code generator</title>
+  <style>
+    body {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+  </style>
+  <script defer src="./bootstrap.js"></script>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <noscript>Can't work without JavaScript</noscript>
+  <div class="controls-container">
+    <label for="qr-payload">Payload</label>
+    <input id="qr-payload" type="text" required />
+  </div>
+  <div class="controls-container">
+    <label for="qr-modes">Mode</label>
+    <select id="qr-modes" required>
+      <option value="numeric">numeric [0-9]+</option>
+      <option value="alphanumeric">alphanumeric ([0-9A-Z $%*+.:/-])+</option>
+      <option value="byte">ISO-8859-1</option>
+      <option value="Kanji">Kanji</option>
+    </select>
+    <label for="qr-version">Version</label>
+    <input type="number" id="qr-version" min="1" max="40" value="1" required />
+    <label for="qr-correction-level">Correction level</label>
+    <select id="qr-correction-level" required>
+      <option value="L">L</option>
+      <option value="M">M</option>
+      <option value="Q">Q</option>
+      <option value="H">H</option>
+    </select>
+    <label for="qr-mask">Mask pattern</label>
+    <input type="number" id="qr-mask" min="0" max="7" required />
+    <button type="button">Generate QR Code</button>
+  </div>
+
+  <button id="play-pause" style="margin-top: 1rem;"></button>
+  <pre id="game-of-life-canvas"></pre>
+</body>
+
+</html>
