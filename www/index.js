@@ -1,38 +1,18 @@
-import { Universe } from "premrust";
+import { QRCode } from "premrust";
 
-const pre = document.getElementById("game-of-life-canvas");
-const playPauseButton = document.getElementById("play-pause");
-const universe = Universe.new();
-let animationId = null;
+const qrPayload = document.getElementById("qr-payload");
+const qrMode = document.getElementById("qr-modes");
+const qrVersion = document.getElementById("qr-version");
+const qrCorrectionLevel = document.getElementById("qr-correction-level");
+const qrMask = document.getElementById("qr-mask");
+const qrGenerateButton = document.getElementById("qr-generate");
+const qrSvg = document.getElementById("qr-svg");
+const qrcode = QRCode.new();
 
-playPauseButton.textContent = "Play game of life ▶";
-
-const isPaused = () => {
-    return animationId === null;
+const qrGenerate = () => {
+    qrSvg.innerHTML = "<circle cx='50' cy='50' r='40' stroke='green' stroke-width='4' fill='yellow' />";
 };
 
-const play = () => {
-    playPauseButton.textContent = "Pause game of life ⏸";
-    renderLoop();
-};
-
-const pause = () => {
-    playPauseButton.textContent = "Play game of life ▶";
-    cancelAnimationFrame(animationId);
-    animationId = null;
-};
-
-const renderLoop = () => {
-    pre.textContent = universe.render();
-    universe.tick();
-
-    animationId = requestAnimationFrame(renderLoop);
-};
-
-playPauseButton.addEventListener("click", event => {
-    if (isPaused()) {
-        play();
-    } else {
-        pause();
-    }
+qrGenerateButton.addEventListener("click", event => {
+    qrGenerate();
 });
